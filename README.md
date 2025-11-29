@@ -64,6 +64,23 @@ Nahraj soubory ze `sources/` a požádej o analýzu a vytvoření poznámek.
 - `case-study` - Případové studie
 - `tools` - AI nástroje
 
+## 📤 Nahrání na GitHub
+
+1. Vytvoř nový repozitář na https://github.com/new
+   - Název: kb
+   - Popis: Znalostní báze pro AI materiály
+   - Visibility: Private (nebo Public dle tvého výběru)
+   - NEVYTVÁŘEJ README (už ho máš)
+
+2. V terminálu v C:/kb/ spusť:
+```bash
+git remote add origin https://github.com/TVOJE-GITHUB-JMENO/kb.git
+git branch -M main
+git push -u origin main
+```
+
+3. Hotovo! Tvá kb je na GitHubu a připravená pro Cursor
+
 ## 📊 Statistiky
 
 - Celkem poznámek: 0
