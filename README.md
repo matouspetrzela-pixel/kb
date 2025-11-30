@@ -1,6 +1,20 @@
-# KB - Moje znalostní báze pro AI
+# 🧠 KB - Znalostní báze pro AI
 
-Osobní databáze materiálů, poznámek a zdrojů o AI, které sbírám pro svou práci jako AI Ambassador.
+> Osobní databáze materiálů, poznámek a zdrojů o AI pro mou práci jako AI Ambassador
+
+[![Last Updated](https://img.shields.io/github/last-commit/GITHUB-JMENO/kb)]()
+[![Notes](https://img.shields.io/badge/notes-1-blue)]()
+
+## 🎯 Účel
+
+Centrální místo pro:
+- 📝 Zpracované poznámky z kurzů, videí, článků
+- 📂 Originální materiály (Word, PPT, PDF)
+- 🏷️ Organizace podle tagů a kategorií
+- 🔄 Verzování a záloha
+- 🤖 Použití v Claude Code a Cursoru
+
+---
 
 ## 📁 Struktura
 
@@ -83,6 +97,6 @@ git push -u origin main
 
 ## 📊 Statistiky
 
-- Celkem poznámek: 0
+- Celkem poznámek: 1
 - Celkem zdrojů: 0
-- Poslední aktualizace: 2025-11-29
+- Poslední aktualizace: 2025-11-30
