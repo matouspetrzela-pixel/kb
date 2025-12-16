@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.temp
+~$*
+
+# Logs
+*.log
+
+# Large binaries (optional - uncomment if too big)
+# *.pptx
+# *.pdf
+
+# Secrets (if any)
+.env
+secrets/
+*.key
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Cache
+.cache/
