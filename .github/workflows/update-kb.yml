@@ -1,0 +1,79 @@
+name: Update Knowledge Base
+
+on:
+  schedule:
+    # Every Sunday at 3 AM UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch: # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-kb:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 lxml
+
+      - name: Update Claude Code docs
+        run: |
+          python claude-code-scraper.py || echo "Claude Code scraper failed"
+
+      - name: Update Anthropic Cookbook
+        run: |
+          python anthropic-cookbook-scraper.py || echo "Anthropic scraper failed"
+
+      - name: Update Awesome Vibe Coding
+        run: |
+          python awesome-vibe-coding-scraper.py || echo "Awesome scraper failed"
+
+      - name: Update AIFirst articles
+        run: |
+          python aifirst-scraper.py || echo "AIFirst scraper failed"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "KB Auto-Updater"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "chore: Auto-update KB sources
+
+          Updated by GitHub Actions
+          - Claude Code docs
+          - Anthropic Cookbook
+          - Awesome Vibe Coding
+          - AIFirst articles
+
+          Date: $(date +'%Y-%m-%d %H:%M:%S')
+
+          🤖 Automated update"
+          git push
+
+      - name: Create summary
+        run: |
+          echo "## KB Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Update completed at $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Updated sources:" >> $GITHUB_STEP_SUMMARY
+          echo "- Claude Code documentation" >> $GITHUB_STEP_SUMMARY
+          echo "- Anthropic Cookbook" >> $GITHUB_STEP_SUMMARY
+          echo "- Awesome Vibe Coding" >> $GITHUB_STEP_SUMMARY
+          echo "- AIFirst.cz articles" >> $GITHUB_STEP_SUMMARY
