@@ -1,0 +1,6 @@
+name = "smart-inspiration-saver"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Secrets (nastav přes: wrangler secret put ANTHROPIC_API_KEY)
+# wrangler secret put AUTH_TOKEN
